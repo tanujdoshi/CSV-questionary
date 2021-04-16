@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
-
+import axios from 'axios';
 import { Button } from "@material-ui/core";
 
 
@@ -30,18 +30,18 @@ const useStyles = makeStyles((theme) => ({
     height: "33px",
   },
   generatebtn: {
-    marginTop:'20px',
-    backgroundColor:'#6F6F6F',
-    color:'white',
-    padding:'10px 30px;',
-    textTransform:'capitalize',
-    fontSize:'16px',
-    fontWeight:'600',
+    marginTop: '20px',
+    backgroundColor: '#6F6F6F',
+    color: 'white',
+    padding: '10px 30px;',
+    textTransform: 'capitalize',
+    fontSize: '16px',
+    fontWeight: '600',
 
     "&:hover": {
-   
+
       backgroundColor: "#6F6F6F"
-  }
+    }
   },
   csvFile: {
     border: " 1px solid #ccc",
@@ -58,14 +58,40 @@ export default function CsvUpload() {
   const [csvName, setCsvName] = useState('');
 
   const classes = useStyles();
-  
-  useEffect( () => {
-     setCsvName(csv.replace('.csv',''))
-  },[csv])
+
+  useEffect(() => {
+    setCsvName(csv.replace('.csv', ''))
+  }, [csv])
+
+  const Postcsv = (e) => {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('file', csv);
+
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/postCsv",
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
+      .then(response => {
+        if (response.status === 200) {
+          console.log("Success, firm added")
+        } else {
+          console.log("Error occurred")
+        }
+      }
+      ).catch(e => {
+        console.log(e)
+      })
+    console.log("Heree?");
+  }
 
   return (
     <div className="container">
-      <form className={classes.root}>
+      <form className={classes.root} onSubmit={Postcsv}>
         <h2 className={classes.heading}> Create a Questioare</h2>
         <InputLabel htmlFor="name" className={classes.lable}>
           Questioare Folder Name
@@ -86,7 +112,7 @@ export default function CsvUpload() {
         />
 
         <InputLabel className={classes.lable}> CSV</InputLabel>
-        
+
         <TextField
           type="text"
           value={csv}
@@ -97,21 +123,21 @@ export default function CsvUpload() {
           variant="outlined"
           required
         />
-       <label for="file-upload" className={classes.csvFile}>
-         Choose from file
+        <label for="file-upload" className={classes.csvFile}>
+          Choose from file
         </label>
-      
+
         <input
           id="file-upload"
           type="file"
           accept=".csv"
           style={{ display: "none" }}
-          onChange={(e) => setCsv(e.target.files[0] &&  e.target.files[0].name)}
+          onChange={(e) => setCsv(e.target.files[0] && e.target.files[0].name)}
           required
         />
 
         <InputLabel htmlFor="name" className={classes.lable}>
-        CSV name
+          CSV name
         </InputLabel>
         <TextField
           id="name"
@@ -145,9 +171,9 @@ export default function CsvUpload() {
           required
         />
 
-        <Button variant="contained"  type='submit' className={classes.generatebtn} disableRipple>
-       
-          Generate 
+        <Button variant="contained" type='submit' className={classes.generatebtn} disableRipple>
+
+          Generate
         </Button>
       </form>
     </div>
