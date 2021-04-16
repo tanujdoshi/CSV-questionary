@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CsvUpload() {
   const [folderName, setFolderName] = useState("");
   const [csv, setCsv] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
   const [email, setEmail] = useState("");
   const [csvName, setCsvName] = useState('');
 
@@ -63,18 +64,13 @@ export default function CsvUpload() {
     setCsvName(csv.replace('.csv', ''))
   }, [csv])
 
+
   const Postcsv = (e) => {
     e.preventDefault();
-    var formData = new FormData();
-    formData.append('file', csv);
+    const data = new FormData()
+    data.append('file', selectedFile)
 
-    axios({
-      method: "POST",
-      url: "http://localhost:5000/postCsv",
-      data: formData,
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
+    axios.post("http://localhost:5000/postCsv", data, {
     })
       .then(response => {
         if (response.status === 200) {
@@ -86,7 +82,6 @@ export default function CsvUpload() {
       ).catch(e => {
         console.log(e)
       })
-    console.log("Heree?");
   }
 
   return (
@@ -132,7 +127,11 @@ export default function CsvUpload() {
           type="file"
           accept=".csv"
           style={{ display: "none" }}
-          onChange={(e) => setCsv(e.target.files[0] && e.target.files[0].name)}
+          onChange={(e) => {
+            setCsv(e.target.files[0] && e.target.files[0].name)
+            setSelectedFile(e.target.files[0])
+          }}
+
           required
         />
 

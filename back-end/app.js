@@ -19,22 +19,30 @@ app.use(cors())
 
 //multer
 const storage = multer.diskStorage({
-  // give it a destination
-  destination(req, file, cb) {
-    cb(null, './upload');
-  },
-  // in case you want to manipulate the file name you can do it here
-  filename(req, file = {}, cb) {
-    cb(null, file.originalname);
-  }
+  destination: function (req, file, cb) {
+  cb(null, './uploads')
+},
+filename: function (req, file, cb) {
+  cb(null, file.originalname )
+}
+})
+
+const upload = multer({ storage: storage }).single('file')
+
+app.post('/postCsv',function(req, res) {
+     
+  upload(req, res, function (err) {
+         if (err instanceof multer.MulterError) {
+             return res.status(500).json(err)
+         } else if (err) {
+             return res.status(500).json(err)
+         }
+    return res.status(200).send(req.file)
+
+  })
+
 });
-var upload = multer({ storage: storage })
 
-
-
-app.post('/postCsv', upload.single('csv'), function (req, res, next) {
-  console.log("Filesss", req.file);
-});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
