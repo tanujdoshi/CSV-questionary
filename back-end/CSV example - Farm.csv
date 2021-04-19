@@ -1,0 +1,110 @@
+ID,Type,Heading,Question text,Options ,Component,Rules,Selection,Then jump to,Images,Requird?,Multiple Choises (Unlimited/Exact Number/ Range)
+1,Question,,What do you grow?,"Fruits
+Vegetables",Dropdown,When someone answers question ,"Fruits
+Vegetables","100
+2",,,
+2,Question,,What's your industry?,"Biological engnerring
+Farma
+Earth saving
+Climate change
+Citys and Farms
+Agriculcutre
+Permacalture
+Pharmasutical
+Pipe Design",Dropdown,,,,,,
+3,Question,,Tell us about your field,,Textfield,,,,,,
+4,Question,,What are you trying to grow?,,Textfield,,,,,,
+5,Question,,What are your conditions?,,Textfield,,,,,,
+6,Question,,"In ten words, tell us what are you trying to make?",,Longtext,,,,,,
+7,Question,,Tell us what do you like them to feel?,,Longtext,,,,,,
+8,Question,,Add anythng else that can help,,Longtext,,,,,,
+9,Question,,Select which vegetible you grow? ,"Carrots
+Brocoli
+Onions",PictureChoice,When someone answers question ,"Carrots
+Brocoli
+Onions","10
+(empty)
+(empty)","//carrots.png
+//brocoli.png
+//onions.png",,
+10,Question,,Choose carrot type,"Asian Carrots
+Medeternan Carrots
+Euripian carrots
+Red carrots
+Tiny Carrots
+Big Carrots",PictureChoice,When someone answers question,"Asian Carrots
+Medeternan Carrots
+Euripian carrots
+Red carrots
+Tiny Carrots
+Big Carrots","11
+(empty)
+(empty)
+(empty)
+(empty)
+(empty)","//asiancarrots.png
+//med-carrots.png
+//europe-carrots.png
+//redcarrots.png
+//tiny-carrots.png
+//big-carrots.png",,
+11,Question,,Asian Carrots,"Asian carrot cake
+Asian carrot candy 
+Asian carrot spread 
+Asian carrot powder
+Asian carrot spices
+Asian carrot crystals",PictureChoice,When someone answers question ,"Asian carrot cake
+Asian carrot candy 
+Asian carrot spread 
+Asian carrot powder
+Asian carrot spices
+Asian carrot crystals","(empty)
+(empty)
+(empty)
+(empty)
+(empty)
+(empty)","//asiancarrots.png
+//med-carrots.png
+//europe-carrots.png
+//redcarrots.png
+//tiny-carrots.png
+//big-carrots.png",,
+12,Question,,Mediterranean Carrots,"Mediterranean carrot cake
+Mediterranean carrot candy 
+Mediterranean carrot spread 
+Mediterranean carrot powder
+Mediterranean carrot spices
+Mediterranean carrot crystals",PictureChoice,When someone answers question ,"Mediterranean carrot cake
+Mediterranean carrot candy 
+Mediterranean carrot spread 
+Mediterranean carrot powder
+Mediterranean carrot spices
+Mediterranean carrot crystals","(empty)
+(empty)
+(empty)
+(empty)
+(empty)
+(empty)",,,
+13,Question Group,Hello world,,,"Button ""Continue""",,,,,,
+13a,Question,,,,,,,,,,
+13b,Question,,,,,,,,,,
+13c,Question,,,,,,,,,,
+13d,Question,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,Question Group,,,,,,,,,,
+4a,,,,,,,,,,,
+4b,,,,,,,,,,,
+4c,,,,,,,,,,,
+4d,,,,,,,,,,,
+5,Question,,,,,,,,,,
+6,Question,,,,,,,,,,
+7,Question,,,,,,,,,,

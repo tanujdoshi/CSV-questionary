@@ -68,8 +68,8 @@ export default function CsvUpload() {
   const Postcsv = (e) => {
     e.preventDefault();
     const data = new FormData()
+    data.append("filename", csv)
     data.append('file', selectedFile)
-
     axios.post("http://localhost:5000/postCsv", data, {
     })
       .then(response => {
